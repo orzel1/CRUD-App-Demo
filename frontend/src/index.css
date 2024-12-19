@@ -1,0 +1,109 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  font-family: serif;
+  line-height: 2;
+  font-weight: 400;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #ffffff;
+  margin: 0 auto;
+}
+aside {
+  background-color: #f5f5f5;
+  height: 100vh;
+  width: 20vw;
+}
+
+#container {
+  display: flex;
+}
+
+#oracleIcon {
+  height: 10vh;
+  width: 5vw;
+  margin-left: auto;
+}
+
+#menuLogo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#menuLogo h3 {
+  font-family: cursive;
+  text-align: center;
+  flex-grow: 1;
+}
+
+main button {
+  width: 10vw;
+  font-size: large;
+  margin: 10px;
+}
+main {
+  width: 100%;
+}
+main hr {
+  background-color: #f5f5f5;
+  height: 2px;
+  border: none;
+  transition: width 0.5s ease, opacity 0.5s ease;
+}
+main h2 {
+  display: inline-flex;
+  align-items: center;
+  margin: 10px;
+  position: relative;
+}
+#hr1 {
+  background-color: #8582f1 !important;
+  height: 2px;
+  border: none;
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  right: 0;
+}
+.h2Button {
+  cursor: pointer;
+}
+
+h1 {
+  margin: 30px;
+}
+
+input[name="searchEmployee"] {
+  margin: 20px;
+  font-size: 20px;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+table{
+  border-collapse: collapse;
+  width: 100%;
+  text-align: center;
+}
+thead{
+  
+  background-color: #f5f5f5;
+}
+th, td {
+  padding: 10px;
+}
+#tableEmployee{
+  margin: 0 50px 0 50px;
+  overflow: hidden;
+  border-radius: 20px 20px 0 0;
+}
+td{
+  border-bottom: 2px solid #f5f5f5;
+}
