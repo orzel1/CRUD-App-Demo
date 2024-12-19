@@ -6,8 +6,7 @@ export const EmployeesList = (props) => {
         <table>
           <thead>
             <tr>
-              <th>ID</th>
-              <th>Imię</th>
+              <th>Imię </th>
               <th>Nazwisko</th>
               <th>Email</th>
               <th>Nr telefonu</th>
@@ -32,11 +31,8 @@ export const EmployeesList = (props) => {
               <td>8</td>
               <td>9</td>
               <td>10</td>
-              <td>11</td>
-              <td>12</td>
-              
+              <td><button className="deleteUser">Usuń</button></td>
             </tr>
-            
           </tbody>
         </table>
       </div>

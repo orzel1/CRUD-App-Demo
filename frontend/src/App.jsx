@@ -5,6 +5,7 @@ import { useSpring, animated } from "@react-spring/web";
 import { Search } from "./components/Search";
 import { EmployeesList } from "./components/EmployeesList";
 import { ListCheck } from "./components/ListCheck";
+import { Form } from "./components/Form";
 
 function App() {
   const [press, setPress] = useState(true);
@@ -33,7 +34,7 @@ function App() {
           <h3>SqlSystem Ziibd</h3>
           <img src="./src/img/oracle.png" alt="Oracle icon" id="oracleIcon" />
         </div>
-        <ListCheck/>
+        <ListCheck />
       </aside>
       <main>
         <h1>Employee Management System</h1>
@@ -47,6 +48,7 @@ function App() {
             <EmployeesList />
           </>
         )}
+        {!press && <><Form/></>}
       </main>
     </div>
   );

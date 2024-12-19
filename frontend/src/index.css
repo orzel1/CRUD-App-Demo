@@ -3,7 +3,10 @@
   padding: 0;
   box-sizing: border-box;
 }
-
+html,
+body {
+  height: 100%;
+}
 :root {
   font-family: serif;
   line-height: 2;
@@ -17,12 +20,13 @@
 }
 aside {
   background-color: #f5f5f5;
-  height: 100vh;
-  width: 20vw;
+  width: 25vw;
+  
 }
 
 #container {
   display: flex;
+  min-height: 100vh;
 }
 
 #oracleIcon {
@@ -35,12 +39,14 @@ aside {
   display: flex;
   align-items: center;
   justify-content: space-between;
+
 }
 
 #menuLogo h3 {
   font-family: cursive;
   text-align: center;
   flex-grow: 1;
+  
 }
 
 main button {
@@ -87,23 +93,66 @@ input[name="searchEmployee"] {
   padding: 10px;
 }
 
-table{
+table {
   border-collapse: collapse;
   width: 100%;
   text-align: center;
 }
-thead{
-  
+thead {
   background-color: #f5f5f5;
 }
-th, td {
+th,
+td {
   padding: 10px;
 }
-#tableEmployee{
+#tableEmployee {
   margin: 0 50px 0 50px;
   overflow: hidden;
   border-radius: 20px 20px 0 0;
 }
-td{
+td {
   border-bottom: 2px solid #f5f5f5;
+}
+
+#listCheck {
+  position: fixed;
+  display: flex;
+}
+.list{
+  margin-left: 30px;
+  font-size: large;
+}
+.list label{
+  display: block; 
+}
+
+li h3 {
+  cursor: pointer;
+}
+
+#addUser {
+
+  margin: 0 auto;
+  margin-top: 20px;
+  border-radius: 50px;
+  border: 2px solid #867777;
+;
+  background-color: #f5f5f5;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 35vw;
+}
+
+#addUser input{
+  font-size: 20px;
+  width: 20vw;
+}
+
+.deleteUser{
+  color: red;
+  border-radius: 20px;
+  background-color: white;
+  width: 90%;
 }
