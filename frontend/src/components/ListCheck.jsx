@@ -3,8 +3,21 @@ import { useState } from "react";
 /* eslint-disable no-unused-vars */
 export const ListCheck = (props) => {
   const [checkedItems, setCheckedItems] = useState([]);
+  const [pressCategory, setPressCategory] = useState(null);
 
-  const [pressContries, setPressContries] = useState(false);
+  const data = {
+    countries: ["Canada", "Germany", "UK", "USA"],
+    departments: [
+      "Administration",
+      "Marketing",
+      "Shipping",
+      "IT",
+      "Sales",
+      "Executive",
+      "Accounting",
+      "Contacting",
+    ]
+  };
 
   const handleCheckboxChange = (event) => {
     const { value, checked } = event.target;
@@ -20,10 +33,10 @@ export const ListCheck = (props) => {
       <div>
         <ul>
           <li>
-            <h3 onClick={()=> setPressContries(!pressContries)}>Countries</h3>
+            <h3 onClick={() => setPressCategory("countries")}>Countries</h3>
           </li>
           <li>
-            <h3>Departments</h3>
+            <h3 onClick={() => setPressCategory("departments")}>Departments</h3>
           </li>
           <li>
             <h3>Jobs</h3>
@@ -37,44 +50,23 @@ export const ListCheck = (props) => {
         </ul>
       </div>
       <div className="list">
-        {pressContries && <div id="countries">
-          <label>
-            <input
-              type="checkbox"
-              value="canada"
-              checked={checkedItems.includes("canada")}
-              onChange={handleCheckboxChange}
-            />
-            Canada
-          </label>
-          <label>
-            <input
-              type="checkbox"
-              value="germany"
-              checked={checkedItems.includes("germany")}
-              onChange={handleCheckboxChange}
-            />
-            Germany
-          </label>
-          <label>
-            <input
-              type="checkbox"
-              value="UK"
-              checked={checkedItems.includes("UK")}
-              onChange={handleCheckboxChange}
-            />
-            United Kingdom
-          </label>
-          <label>
-            <input
-              type="checkbox"
-              value="USA"
-              checked={checkedItems.includes("USA")}
-              onChange={handleCheckboxChange}
-            />
-            USA
-          </label>
-        </div>}
+        <div>
+          {pressCategory && (
+            <div id={pressCategory}>
+              {data[pressCategory].map((item) => (
+                <label key={item}>
+                  <input
+                    type="checkbox"
+                    value={item}
+                    checked={checkedItems.includes(item)}
+                    onChange={handleCheckboxChange}
+                  />
+                  {item}
+                </label>
+              ))}
+            </div>
+          )}
+        </div>
       </div>
     </form>
   );

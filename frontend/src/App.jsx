@@ -29,11 +29,13 @@ function App() {
   return (
     <div id="container">
       <aside>
-        <div id="menuLogo">
-          <h3>SqlSystem Ziibd</h3>
-          <img src="./src/img/oracle.png" alt="Oracle icon" id="oracleIcon" />
+        <div id="aside-fixed">
+          <div id="menuLogo">
+            <h3>SqlSystem Ziibd</h3>
+            <img src="./src/img/oracle.png" alt="Oracle icon" id="oracleIcon" />
+          </div>
+          <ListCheck />
         </div>
-        <ListCheck />
       </aside>
       <main>
         <h1>Employee Management System</h1>
@@ -46,7 +48,11 @@ function App() {
             <EmployeesList />
           </>
         )}
-        {!press && <><Form/></>}
+        {!press && (
+          <>
+            <Form />
+          </>
+        )}
       </main>
     </div>
   );
