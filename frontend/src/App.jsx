@@ -2,7 +2,6 @@
 //import './App.css'
 import { useState } from "react";
 import { useSpring, animated } from "@react-spring/web";
-import { Search } from "./components/Search";
 import { EmployeesList } from "./components/EmployeesList";
 import { ListCheck } from "./components/ListCheck";
 import { Form } from "./components/Form";
@@ -44,7 +43,6 @@ function App() {
         <hr />
         {press && (
           <>
-            <Search />
             <EmployeesList />
           </>
         )}
