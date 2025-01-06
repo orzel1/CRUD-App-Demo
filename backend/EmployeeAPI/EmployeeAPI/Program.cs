@@ -10,18 +10,14 @@ builder.Services.AddControllers(); // Dodaj wszystkie kontrolery
 
 var connectionString = builder.Configuration.GetConnectionString("ZIIBDatabase");
 
-if (connectionString != null )
-{
-    Console.WriteLine("Polaczono z : " + connectionString);
-}
-else
-{
-    Console.WriteLine("Blad polaczenia z baza danych");
-}
-
 builder.Services.AddDbContext<ZIIBDbContext>(options => options.UseOracle(connectionString)); // Dodaj polaczenie z baza do apki
 
-builder.Services.AddScoped<IEmployeeService, EmployeeService>(); // wstrzykuj zaleznosc serwisu employee do apki
+// Wstrzykiwanie zaleznosci do apki
+builder.Services.AddScoped<IEmployeeService, EmployeeService>();
+builder.Services.AddScoped<ICountryService, CountryService>();
+builder.Services.AddScoped<IDepartmentService, DepartmentService>();
+builder.Services.AddScoped<IJobService, JobService>();
+builder.Services.AddScoped<ILocationService, LocationService>();
 
 var app = builder.Build(); // Buduj ten szajs
 

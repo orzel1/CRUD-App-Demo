@@ -1,13 +1,17 @@
-﻿namespace EmployeeAPI.Models
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace EmployeeAPI.Models
 {
+    [Table("LOCATIONS")]
     public class Location
     {
-        public required int locationId { get; set; }
-        public string? streetAddress { get; set; }
-        public string? postalCode { get; set; }
+        public required int location_id { get; set; }
+        public string? street_address { get; set; }
+        public string? postal_code { get; set; }
         public required string city { get; set; }
-        public string? stateProvince { get; set; }
-        public string? countryId { get; set; }
+        public string? state_province { get; set; }
+        public string? country_id { get; set; }
 
     }
 }
