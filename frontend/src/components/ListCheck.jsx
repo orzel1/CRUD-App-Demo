@@ -16,7 +16,7 @@ export const ListCheck = (props) => {
       "Executive",
       "Accounting",
       "Contacting",
-    ]
+    ],
   };
 
   const handleCheckboxChange = (event) => {
@@ -33,19 +33,30 @@ export const ListCheck = (props) => {
       <div>
         <ul>
           <li>
-            <h3 onClick={() => setPressCategory("countries")}>Countries</h3>
+            <h3
+              onClick={() => {
+                if (pressCategory === "countries") setPressCategory(null);
+                else setPressCategory("countries");
+              }}
+            >
+              Countries
+            </h3>
           </li>
           <li>
-            <h3 onClick={() => setPressCategory("departments")}>Departments</h3>
+            <h3
+              onClick={() => {
+                if (pressCategory === "departments") setPressCategory(null);
+                else setPressCategory("departments");
+              }}
+            >
+              Departments
+            </h3>
           </li>
           <li>
             <h3>Jobs</h3>
           </li>
           <li>
             <h3>Locations</h3>
-          </li>
-          <li>
-            <h3>Regions</h3>
           </li>
         </ul>
       </div>

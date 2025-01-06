@@ -12,6 +12,62 @@ export const EmployeesList = (props) => {
   const [error, setError] = useState(null);
   const [isReverse, setIsReverse] = useState(false);
   const [sorted, setSorted] = useState();
+  const [id, setId] = useState();
+
+  const [first_name, setFirst_Name] = useState("");
+  const [surname, setSurname] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone_number, setPhone_number] = useState("");
+  const [hire_date, setHire_date] = useState("");
+  const [job_name, setJob_name] = useState("");
+  const [salary, setSalary] = useState("");
+  const [commission, setCommission] = useState("");
+  const [manager, setManager] = useState("");
+  const [department_name, setDepartment_name] = useState("");
+
+  const formData = {
+    id,
+    first_name,
+    surname,
+    email,
+    phone_number,
+    hire_date,
+    job_name,
+    salary,
+    commission,
+    manager,
+    department_name,
+  };
+
+  const [originalFormData, setOriginalFormData] = useState({
+    first_name: "",
+    surname: "",
+    email: "",
+    phone_number: "",
+    hire_date: "",
+    job_name: "",
+    salary: "",
+    commission: "",
+    manager: "",
+    department_name: "",
+  });
+
+  const handleEdit = (id) => {
+    setId(id);
+    const employee = data.find((emp) => emp.id === id);
+    setOriginalFormData(employee);
+
+    setFirst_Name(employee.first_name);
+    setSurname(employee.surname);
+    setEmail(employee.email);
+    setPhone_number(employee.phone_number);
+    setHire_date(employee.hire_date);
+    setJob_name(employee.job_name);
+    setSalary(employee.salary);
+    setCommission(employee.commission);
+    setManager(employee.manager);
+    setDepartment_name(employee.department_name);
+  };
 
   const sortByString = (key) => {
     setSorted(key);
@@ -68,6 +124,7 @@ export const EmployeesList = (props) => {
     if (!isReverse) return <HiArrowCircleDown className="arrow" />;
     else return <HiArrowCircleUp className="arrow" />;
   };
+
   const fetchData = async () => {
     try {
       const response = await fetch(
@@ -84,6 +141,38 @@ export const EmployeesList = (props) => {
     } finally {
       setIsLoading(false);
     }
+  };
+
+  const deleteData = async (promp) => {
+    try {
+      console.log(promp);
+    } catch (e) {
+      console.log(`Wystąpił błąd: ${e}`);
+    }
+  };
+
+  const isEmpty = (obj) => {
+    return Object.keys(obj).length === 0;
+  };
+
+  const editData = async () => {
+    const differences = Object.fromEntries(
+      Object.entries(formData).filter(
+        ([key, value]) => value !== originalFormData[key]
+      )
+    );
+
+    const result = { id: id, ...differences };
+
+    try {
+      if (!isEmpty(differences)) {
+        console.log(JSON.stringify(result));
+      }
+    } catch (e) {
+      console.log(`Wystąpił błąd: ${e}`);
+    }
+
+    setId(null);
   };
 
   useEffect(() => {
@@ -137,25 +226,169 @@ export const EmployeesList = (props) => {
                 Nazwa Departamentu
                 {sorted === "department_name" ? renderArrow() : null}
               </th>
-              <th>Usuń</th>
+              <th>
+                Usuń/
+                <br />
+                Edytuj
+              </th>
             </tr>
           </thead>
           <tbody>
             {data.map((employee, index) => (
               <tr key={index}>
-                <td>{employee.first_name}</td>
-                <td>{employee.surname}</td>
-                <td>{employee.email}</td>
-                <td>{employee.phone_number}</td>
-                <td>{employee.hire_date}</td>
-                <td>{employee.job_name}</td>
-                <td>{employee.salary}</td>
-                <td>{employee.commission}</td>
-                <td>{employee.manager}</td>
-                <td>{employee.department_name}</td>
-                <td>
-                  <button className="deleteUser">Usuń</button>
-                </td>
+                {id === employee.id ? (
+                  <>
+                    <td>
+                      <input
+                        defaultValue={employee.first_name}
+                        onChange={(e) => {
+                          {
+                            setFirst_Name(e.target.value) &&
+                              setFirst_Name(employee.first_name);
+                          }
+                        }}
+                        className="editInput"
+                        type="text"
+                      />
+                    </td>
+                    <td>
+                      <input
+                        onChange={(e) => {
+                          setSurname(e.target.value);
+                        }}
+                        defaultValue={employee.surname}
+                        className="editInput"
+                        type="text"
+                      />
+                    </td>
+                    <td>
+                      <input
+                        onChange={(e) => {
+                          setEmail(e.target.value);
+                        }}
+                        defaultValue={employee.email}
+                        className="editInput"
+                        type="email"
+                      />
+                    </td>
+                    <td>
+                      <input
+                        onChange={(e) => {
+                          setPhone_number(e.target.value);
+                        }}
+                        defaultValue={employee.phone_number}
+                        className="editInput"
+                        type="text"
+                      />
+                    </td>
+                    <td>
+                      <input
+                        onChange={(e) => {
+                          setHire_date(e.target.value);
+                        }}
+                        defaultValue={
+                          new Date(employee.hire_date)
+                            .toISOString()
+                            .split("T")[0]
+                        }
+                        className="editInput"
+                        type="date"
+                      />
+                    </td>
+                    <td>
+                      <input
+                        onChange={(e) => {
+                          setJob_name(e.target.value);
+                        }}
+                        defaultValue={employee.job_name}
+                        className="editInput"
+                        type="text"
+                      />
+                    </td>
+                    <td>
+                      <input
+                        onChange={(e) => {
+                          setSalary(e.target.value);
+                        }}
+                        defaultValue={employee.salary}
+                        className="editInput"
+                        type="number"
+                      />
+                    </td>
+                    <td>
+                      <input
+                        onChange={(e) => {
+                          setCommission(e.target.value);
+                        }}
+                        defaultValue={employee.commission}
+                        className="editInput"
+                        type="number"
+                      />
+                    </td>
+                    <td>
+                      <input
+                        onChange={(e) => {
+                          setManager(e.target.value);
+                        }}
+                        defaultValue={employee.manager}
+                        className="editInput"
+                        type="text"
+                      />
+                    </td>
+                    <td>
+                      <input
+                        onChange={(e) => {
+                          setDepartment_name(e.target.value);
+                        }}
+                        defaultValue={employee.department_name}
+                        className="editInput"
+                        type="text"
+                      />
+                    </td>
+                    <td>
+                      <button className="editUser" onClick={() => editData()}>
+                        Zapisz
+                      </button>
+                      <button className="editUser" onClick={() => setId(null)}>
+                        Anuluj
+                      </button>
+                    </td>
+                  </>
+                ) : (
+                  <>
+                    <td>{employee.first_name}</td>
+                    <td>{employee.surname}</td>
+                    <td>{employee.email}</td>
+                    <td>{employee.phone_number}</td>
+                    <td>
+                      {new Date(employee.hire_date).toISOString().split("T")[0]}
+                    </td>
+
+                    <td>{employee.job_name}</td>
+                    <td>{employee.salary}</td>
+                    <td>{employee.commission}</td>
+                    <td>{employee.manager}</td>
+                    <td>{employee.department_name}</td>
+                    <td>
+                      <button
+                        className="deleteUser"
+                        onClick={() => {
+                          deleteData(employee.id);
+                        }}
+                      >
+                        Usuń
+                      </button>
+                      <button
+                        className="editUser"
+                        onClick={() => {
+                          handleEdit(employee.id);
+                        }}
+                      >
+                        Edytuj
+                      </button>
+                    </td>
+                  </>
+                )}
               </tr>
             ))}
           </tbody>
