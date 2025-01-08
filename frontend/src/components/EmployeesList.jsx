@@ -127,13 +127,13 @@ export const EmployeesList = (props) => {
 
   const fetchData = async () => {
     try {
-      const response = await fetch(
-        "https://my.api.mockaroo.com/users.json?key=d9ffeed0"
-      );
+      // const response = await fetch(
+      //   "https://my.api.mockaroo.com/users.json?key=d9ffeed0"
+      // );
       // if (!response.ok) {
       //   throw new Error('Network response was not ok');
       // }
-      const result = await response.json();
+      // const result = await response.json();
       setData(Dane);
       setTempData(Dane);
     } catch (error) {
@@ -146,6 +146,19 @@ export const EmployeesList = (props) => {
   const deleteData = async (promp) => {
     try {
       console.log(promp);
+      // const response = await fetch(
+      //   "https://your-server-endpoint.com/api/endpoint", //wkleić tutaj endpoint do usuwania użytkownika
+      //   {
+      //     method: "POST",
+      //     headers: { "Content-Type": "application/json" },
+      //     body: JSON.stringify(promp),
+      //   }
+      // );
+      // if (!response.ok) {
+      //   throw new Error("Network response was not ok");
+      // }
+      // const result = await response.json();
+      // console.log("Success:", result);
     } catch (e) {
       console.log(`Wystąpił błąd: ${e}`);
     }
@@ -167,6 +180,19 @@ export const EmployeesList = (props) => {
     try {
       if (!isEmpty(differences)) {
         console.log(JSON.stringify(result));
+        // const response = await fetch(
+        //   "https://your-server-endpoint.com/api/endpoint", //wkleić tutaj endpoint do edytowania użytkownika
+        //   {
+        //     method: "POST",
+        //     headers: { "Content-Type": "application/json" },
+        //     body: JSON.stringify(result),
+        //   }
+        // );
+        // if (!response.ok) {
+        //   throw new Error("Network response was not ok");
+        // }
+        // const result = await response.json();
+        // console.log("Success:", result);
       }
     } catch (e) {
       console.log(`Wystąpił błąd: ${e}`);

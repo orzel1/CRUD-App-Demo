@@ -17,6 +17,16 @@ export const ListCheck = (props) => {
       "Accounting",
       "Contacting",
     ],
+    jobs: [
+      "Administration",
+      "Marketing",
+      "Shipping",
+      "IT",
+      "Sales",
+      "Executive",
+      "Accounting",
+      "Contacting",
+    ],
   };
 
   const handleCheckboxChange = (event) => {
