@@ -2,7 +2,6 @@
 //import './App.css'
 import { useState } from "react";
 import { useSpring, animated } from "@react-spring/web";
-import { Search } from "./components/Search";
 import { EmployeesList } from "./components/EmployeesList";
 import { ListCheck } from "./components/ListCheck";
 import { Form } from "./components/Form";
@@ -30,11 +29,13 @@ function App() {
   return (
     <div id="container">
       <aside>
-        <div id="menuLogo">
-          <h3>SqlSystem Ziibd</h3>
-          <img src="./src/img/oracle.png" alt="Oracle icon" id="oracleIcon" />
+        <div id="aside-fixed">
+          <div id="menuLogo">
+            <h3>SqlSystem Ziibd</h3>
+            <img src="./src/img/oracle.png" alt="Oracle icon" id="oracleIcon" />
+          </div>
+          <ListCheck />
         </div>
-        <ListCheck />
       </aside>
       <main>
         <h1>Employee Management System</h1>
@@ -44,11 +45,14 @@ function App() {
         <hr />
         {press && (
           <>
-            <Search />
             <EmployeesList />
           </>
         )}
-        {!press && <><Form/></>}
+        {!press && (
+          <>
+            <Form />
+          </>
+        )}
       </main>
     </div>
   );
