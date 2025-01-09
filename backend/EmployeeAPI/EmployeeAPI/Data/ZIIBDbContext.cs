@@ -16,7 +16,6 @@ namespace EmployeeAPI.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-
             // Definicja kluczy glownych
             modelBuilder.Entity<Country>()
                 .HasKey(e => e.country_id);
@@ -35,6 +34,9 @@ namespace EmployeeAPI.Data
 
             // Asp.net wysyla zapytanie poslugujac sie nazwami zmiennych z klas modelowych, w naszym przypadku musimy uzyc nazw bezposrednio z bazy danych ziibd
             // Employees
+
+            modelBuilder.Entity<Employee>()
+                .ToTable("EMPLOYEES");
 
             modelBuilder.Entity<Employee>()
                 .Property(e => e.employee_id)
@@ -101,6 +103,11 @@ namespace EmployeeAPI.Data
             modelBuilder.Entity<Department>() // Department
                 .Property(e => e.department_name)
                 .HasColumnName("DEPARTMENT_NAME")
+                .IsRequired();
+
+            modelBuilder.Entity<Department>() // Department
+                .Property(e => e.department_id)
+                .HasColumnName("DEPARTMENT_ID")
                 .IsRequired();
 
             modelBuilder.Entity<Job>() // Job

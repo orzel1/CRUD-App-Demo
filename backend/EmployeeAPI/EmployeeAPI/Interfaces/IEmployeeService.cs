@@ -1,13 +1,14 @@
-﻿using EmployeeAPI.Models;
+﻿using EmployeeAPI.Dtos;
+using EmployeeAPI.Models;
 
 namespace EmployeeAPI.Interfaces
 
 {
     public interface IEmployeeService
     {
-        public void addEmployee(Employee Employee);
         public IEnumerable<Employee> listAllEmployees();
-        public bool updateEmployee(int id);
+        public IEnumerable<EmployeeJoinDto> listAllEmployeesJoin();
+        public bool updateEmployee(int id, EmployeeDto dto);
         public bool deleteEmployee(int id);
     }
 }

@@ -2,6 +2,7 @@ using EmployeeAPI.Data;
 using EmployeeAPI.Services;
 using EmployeeAPI.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using EmployeeAPI.Profiles;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,6 +19,9 @@ builder.Services.AddScoped<ICountryService, CountryService>();
 builder.Services.AddScoped<IDepartmentService, DepartmentService>();
 builder.Services.AddScoped<IJobService, JobService>();
 builder.Services.AddScoped<ILocationService, LocationService>();
+
+// Mapuj profile, ktore znajduja sie w lokalizacji programu
+builder.Services.AddAutoMapper(typeof(Program));
 
 var app = builder.Build(); // Buduj ten szajs
 

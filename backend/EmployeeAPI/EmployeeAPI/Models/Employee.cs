@@ -17,5 +17,14 @@ namespace EmployeeAPI.Models
         public decimal? commission_pct { get; set; }
         public int? manager_id { get; set; }
         public int? department_id { get; set; }
+
+
+        //[ForeignKey("DEPARTMENT_ID")]
+        //public Department Department { get; set; }
+
+        //[ForeignKey("JOB_ID")]
+        //public Job Job { get; set; }
+        //public Location Location { get; set; }
+        //public Country Country { get; set; }
     }
 }

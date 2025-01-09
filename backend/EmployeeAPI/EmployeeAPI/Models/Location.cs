@@ -13,5 +13,7 @@ namespace EmployeeAPI.Models
         public string? state_province { get; set; }
         public string? country_id { get; set; }
 
+        //[ForeignKey("COUNTRY_ID")]
+        //public Country Country { get; set; }
     }
 }

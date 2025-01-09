@@ -10,5 +10,8 @@ namespace EmployeeAPI.Models
         public required string department_name { get; set; }
         public int? manager_id { get; set; }
         public int? location_id { get; set; }
+
+        //[ForeignKey("LOCATION_ID")]
+        //public Location Location { get; set; }
     }
 }
